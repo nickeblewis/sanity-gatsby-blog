@@ -24,7 +24,6 @@ export const query = graphql`
         current
       }
       _rawBody(resolveReferences: {maxDepth: 5})
-      
     }
   }
 `
