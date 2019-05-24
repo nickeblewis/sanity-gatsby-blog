@@ -9,12 +9,13 @@ import styles from './blog-post-preview.module.css'
 import {responsiveTitle3} from './typography.module.css'
 
 function GalleryPostPreview (props) {
+  console.log('debug2',props)
   return (
     <Link
       className={props.isInList ? styles.inList : styles.inGrid}
       to={getBlogUrl(props.publishedAt, props.slug.current)}
     >
-      {/* <div className={styles.leadMediaThumb}>
+      <div className={styles.leadMediaThumb}>
         {props.mainImage && props.mainImage.asset && (
           <img
             src={imageUrlFor(buildImageObj(props.mainImage))
@@ -33,8 +34,7 @@ function GalleryPostPreview (props) {
           </div>
         )}
         <div className={styles.date}>{format(props.publishedAt, 'MMMM Do, YYYY')}</div>
-      </div> */}
-      <h3>{props.title}</h3>
+      </div>
     </Link>
   )
 }

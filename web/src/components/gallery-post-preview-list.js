@@ -1,6 +1,6 @@
 import {Link} from 'gatsby'
 import React from 'react'
-import BlogPostPreview from './blog-post-preview'
+import GalleryPostPreview from './gallery-post-preview'
 
 import styles from './gallery-post-preview-list.module.css'
 
@@ -12,8 +12,7 @@ function GalleryPostPreviewGrid (props) {
         {props.nodes &&
           props.nodes.map(node => (
             <li key={node.id}>
-              {/* <BlogPostPreview {...node} isInList /> */}
-              {node.title}
+              <GalleryPostPreview {...node} isInList />              
             </li>
           ))}
       </ul>
