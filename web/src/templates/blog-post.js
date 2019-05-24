@@ -92,6 +92,7 @@ const BlogPostTemplate = props => {
       )}
 
       {post && <BlogPost {...post} />}
+      {/* TODO - insert BlogGallery here for a full set of photos */}
     </Layout>
   )
 }
