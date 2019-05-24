@@ -6,6 +6,7 @@ import {
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
 import BlogPostPreviewList from '../components/blog-post-preview-list'
+import GalleryPostPreviewList from '../components/gallery-post-preview-list'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
@@ -39,6 +40,17 @@ export const query = graphql`
       title
       description
       keywords
+    }
+    galleries: allSanityGallery {
+      edges {
+        node {
+          id          
+          title
+          slug {
+            current
+          }
+        }
+      }
     }
     posts: allSanityPost(
       limit: 6
@@ -134,6 +146,11 @@ const IndexPage = props => {
       .filter(filterOutDocsPublishedInTheFuture)
     : []
 
+  const galleryNodes = (data || {}).galleries
+    ? mapEdgesToNodes(data.galleries)
+    .filter(filterOutDocsWithoutSlugs)    
+  : []
+
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -153,6 +170,13 @@ const IndexPage = props => {
           <BlogPostPreviewList
             title="Latest blog posts"
             nodes={postNodes}
+            browseMoreHref="/archive/"
+          />
+        )}
+        {galleryNodes && (
+          <GalleryPostPreviewList
+            title="Galleries"
+            nodes={galleryNodes}
             browseMoreHref="/archive/"
           />
         )}

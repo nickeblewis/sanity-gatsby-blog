@@ -1,3 +1,4 @@
+// TODO - Copy content from CF to here and then get rid of the fields that aren't needed
 export default {
     name: 'gallery',
     title: 'Gallery',
