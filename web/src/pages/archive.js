@@ -9,28 +9,6 @@ import Layout from '../containers/layout'
 
 import {responsiveTitle1} from '../components/typography.module.css'
 
-// TODO - Later today fix the missing rawExcerpt issue
-// export const query = graphql`
-//   query ArchivePageQuery {
-//     posts: allSanityPost(limit: 12, sort: {fields: [publishedAt], order: DESC}) {
-//       edges {
-//         node {
-//           id
-//           publishedAt
-//           mainImage {
-//             ...SanityImage
-//             alt
-//           }
-//           title
-//           _rawExcerpt
-//           slug {
-//             current
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 export const query = graphql`
   query ArchivePageQuery {
     posts: allSanityPost(limit: 12, sort: {fields: [publishedAt], order: DESC}) {
@@ -42,7 +20,8 @@ export const query = graphql`
             ...SanityImage
             alt
           }
-          title          
+          title  
+          _rawExcerpt        
           slug {
             current
           }
